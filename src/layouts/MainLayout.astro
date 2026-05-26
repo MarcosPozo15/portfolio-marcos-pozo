@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Marcos Pozo | Desarrollador Web Junior DAW',
+  description = 'Portfolio profesional de Marcos Pozo, desarrollador web recién titulado en DAW con foco en backend, despliegue e infraestructura.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio de Marcos Pozo, desarrollador web junior especializado en backend, despliegue, bases de datos y aplicaciones web."/>
+    <meta name="theme-color" content="#020617" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="noise"></div>
+    <slot />
+  </body>
+</html>

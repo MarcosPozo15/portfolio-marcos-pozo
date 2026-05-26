@@ -1,0 +1,80 @@
+<section id="inicio" class="relative overflow-hidden pb-20 pt-16 sm:pb-28 sm:pt-24">
+  <div class="pointer-events-none absolute left-1/2 top-16 h-72 w-72 -translate-x-1/2 rounded-full bg-violet-500/20 blur-3xl animate-pulseSoft"></div>
+  <div class="pointer-events-none absolute right-10 top-40 hidden h-52 w-52 rounded-full bg-cyan-400/10 blur-3xl animate-floatSlow lg:block"></div>
+
+  <div class="container-page grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
+    <div class="animate-fadeUp">
+      <div class="mb-6 flex flex-wrap gap-3">
+        <span class="badge">DAW recién titulado</span>
+        <span class="badge">Backend · Deploy · Infra</span>
+        <span class="badge">Disponible junior</span>
+      </div>
+
+      <h1 class="max-w-4xl text-4xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
+        Desarrollo aplicaciones web con mentalidad de
+        <span class="bg-gradient-to-r from-violet-300 via-cyan-200 to-emerald-200 bg-clip-text text-transparent">producción real.</span>
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+        Soy Marcos Pozo, desarrollador web junior formado en DAW. Me interesa especialmente el backend, las APIs, las bases de datos, Linux, Docker y el despliegue de aplicaciones reales.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+        <a href="/docs/cv-marcos-pozo.pdf" class="btn-secondary" target="_blank" rel="noreferrer">Descargar CV</a>
+      </div>
+
+      <dl class="mt-10 grid max-w-2xl grid-cols-3 gap-3">
+        <div class="glass rounded-3xl p-4">
+          <dt class="text-xs font-bold uppercase tracking-widest text-slate-400">Proyectos</dt>
+          <dd class="mt-2 text-3xl font-black text-white">3+</dd>
+        </div>
+        <div class="glass rounded-3xl p-4">
+          <dt class="text-xs font-bold uppercase tracking-widest text-slate-400">Stack</dt>
+          <dd class="mt-2 text-3xl font-black text-white">Full</dd>
+        </div>
+        <div class="glass rounded-3xl p-4">
+          <dt class="text-xs font-bold uppercase tracking-widest text-slate-400">Foco</dt>
+          <dd class="mt-2 text-3xl font-black text-white">API</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="relative animate-fadeUp lg:justify-self-end" style="animation-delay: .15s;">
+      <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-violet-500/20 to-cyan-400/20 blur-2xl"></div>
+      <div class="glass shine-card relative overflow-hidden rounded-[2rem] p-5 shadow-glow">
+        <div class="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
+          <div class="flex gap-2">
+            <span class="terminal-dot bg-red-400"></span>
+            <span class="terminal-dot bg-yellow-300"></span>
+            <span class="terminal-dot bg-emerald-400"></span>
+          </div>
+          <span class="font-mono text-xs text-slate-400">portfolio.config.ts</span>
+        </div>
+
+        <pre class="overflow-hidden whitespace-pre-wrap text-sm leading-7 text-slate-300"><code><span class="text-violet-300">const</span> perfil = &#123;
+  nombre: <span class="text-emerald-300">'Marcos Pozo'</span>,
+  rol: <span class="text-cyan-300">'Junior Web Developer'</span>,
+  formacion: <span class="text-emerald-300">'DAW'</span>,
+  foco: [<span class="text-emerald-300">'Backend'</span>, <span class="text-emerald-300">'Deploy'</span>, <span class="text-emerald-300">'Infra'</span>],
+  stack: [<span class="text-emerald-300">'Java'</span>, <span class="text-emerald-300">'Node'</span>, <span class="text-emerald-300">'SQL'</span>],
+  estado: <span class="text-cyan-300 cursor-blink">'buscando oportunidad'</span>
+&#125;</code></pre>
+
+        <div class="mt-6 grid grid-cols-2 gap-3 text-sm">
+          <div class="rounded-2xl border border-violet-300/20 bg-violet-300/10 p-4">
+            <p class="font-bold text-violet-100">Backend</p>
+            <p class="mt-1 text-slate-400">APIs, servicios, datos</p>
+          </div>
+          <div class="rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-4">
+            <p class="font-bold text-cyan-100">Deploy</p>
+            <p class="mt-1 text-slate-400">Git, Linux, hosting</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute -right-6 -top-6 hidden h-16 w-16 rounded-3xl border border-cyan-300/20 bg-cyan-300/10 shadow-cyanGlow animate-float sm:block"></div>
+      <div class="absolute -bottom-6 -left-6 hidden h-20 w-20 rounded-full border border-violet-300/20 bg-violet-300/10 shadow-glow animate-spinSlow sm:block"></div>
+    </div>
+  </div>
+</section>

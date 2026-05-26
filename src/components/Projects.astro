@@ -1,0 +1,140 @@
+---
+const projects = [
+  {
+    title: 'MyMusic’s',
+    type: 'Proyecto final DAW',
+    image: '/images/mymusics.svg',
+    description: 'Plataforma web tipo SoundCloud donde los usuarios pueden subir, escuchar y compartir música propia. Incluye panel de administración, usuarios, canciones, portadas, comentarios, likes, reportes y modo mantenimiento.',
+    tech: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'Hosting'],
+    highlights: ['Panel de administración', 'Sistema de reportes', 'Subida de audio e imágenes', 'Despliegue real'],
+    demoUrl: 'https://a1.dawbaza.es',
+    codeUrl: 'https://github.com/MarcosPozo15',
+    status: 'Demo disponible'
+  },
+  {
+    title: 'SaaS de citas multiempresa',
+    type: 'Backend/API',
+    image: '/images/app-citas.svg',
+    description: 'Aplicación SaaS para reservas de citas por negocio. Permite gestionar servicios, empleados, horarios y disponibilidad, calculando huecos y asignando empleados automáticamente.',
+    tech: ['Node.js', 'NestJS', 'PostgreSQL', 'Prisma', 'Angular'],
+    highlights: ['Arquitectura modular', 'Roles por negocio', 'Cálculo de disponibilidad', 'API REST'],
+    demoUrl: '#',
+    codeUrl: 'https://github.com/MarcosPozo15',
+    status: 'En desarrollo'
+  },
+  {
+    title: 'Task Manager Pro',
+    type: 'Java backend',
+    image: '/images/task-manager.svg',
+    description: 'Aplicación de gestión de tareas desarrollada con Spring Boot para practicar arquitectura MVC, servicios, repositorios, persistencia y despliegue con base de datos.',
+    tech: ['Java', 'Spring Boot', 'Maven', 'PostgreSQL', 'Docker'],
+    highlights: ['Spring MVC', 'JPA/Hibernate', 'PostgreSQL', 'Proyecto ideal Java junior'],
+    demoUrl: '#',
+    codeUrl: 'https://github.com/MarcosPozo15',
+    status: 'Repositorio'
+  }
+];
+---
+
+<section id="proyectos" class="section-padding">
+  <div class="container-page">
+    <div class="reveal">
+      <span class="section-kicker">Proyectos</span>
+      <h2 class="section-title">Proyectos pensados para enseñar código, criterio y evolución.</h2>
+      <p class="section-text">
+        Cada proyecto explica qué problema resuelve, qué tecnologías usa y qué parte demuestra mejor mi perfil como desarrollador web junior.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {projects.map((project, index) => (
+        <article
+          class="glass shine-card reveal group flex flex-col overflow-hidden rounded-[2rem] transition duration-300 hover:-translate-y-2 hover:shadow-neon"
+          style={`transition-delay: ${index * 100}ms`}
+        >
+          <a
+            href={project.demoUrl !== '#' ? project.demoUrl : project.codeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative block overflow-hidden border-b border-white/10 bg-slate-900/70 p-5"
+            aria-label={`Abrir proyecto ${project.title}`}
+          >
+            <img
+              src={project.image}
+              alt={`Vista previa de ${project.title}`}
+              class="h-52 w-full rounded-3xl object-cover transition duration-500 group-hover:scale-[1.05]"
+            />
+
+            <span class="absolute left-8 top-8 rounded-full border border-cyan-300/20 bg-cyan-300/15 px-3 py-1 text-xs font-black uppercase tracking-widest text-cyan-100">
+              {project.type}
+            </span>
+
+            <span class="absolute bottom-8 right-8 rounded-full border border-white/10 bg-slate-950/80 px-3 py-1 text-xs font-bold text-slate-200 backdrop-blur">
+              {project.status}
+            </span>
+
+            <div class="absolute inset-5 rounded-3xl bg-slate-950/0 transition duration-300 group-hover:bg-slate-950/30"></div>
+
+            <div class="absolute inset-5 flex items-center justify-center opacity-0 transition duration-300 group-hover:opacity-100">
+              <span class="rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-black text-white backdrop-blur-xl">
+                Abrir proyecto →
+              </span>
+            </div>
+          </a>
+
+          <div class="flex flex-1 flex-col p-6">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="text-2xl font-black text-white">{project.title}</h3>
+              <span class="rounded-full bg-emerald-300/10 px-3 py-1 text-xs font-bold text-emerald-200">
+                #{index + 1}
+              </span>
+            </div>
+
+            <p class="mt-4 flex-1 leading-7 text-slate-300">{project.description}</p>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              {project.tech.map((item) => (
+                <span class="rounded-full bg-violet-300/10 px-3 py-1 text-xs font-bold text-violet-100">
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <ul class="mt-6 space-y-2 text-sm text-slate-300">
+              {project.highlights.map((item) => (
+                <li class="flex gap-2">
+                  <span class="mt-1.5 h-2 w-2 rounded-full bg-cyan-300 shadow-cyanGlow"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-7 grid grid-cols-2 gap-3">
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`rounded-2xl px-4 py-3 text-center text-sm font-black transition ${
+                  project.demoUrl !== '#'
+                    ? 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'
+                    : 'pointer-events-none bg-slate-800 text-slate-500'
+                }`}
+              >
+                Ver demo
+              </a>
+
+              <a
+                href={project.codeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm font-black text-white transition hover:border-violet-300/40 hover:bg-violet-300/10"
+              >
+                Ver código
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+---
+const groups = [
+  {
+    title: 'Backend',
+    subtitle: 'Lógica, APIs y servicios',
+    skills: ['Java', 'Spring Boot', 'Node.js', 'NestJS', 'PHP', 'REST APIs']
+  },
+  {
+    title: 'Frontend',
+    subtitle: 'Interfaces limpias y responsive',
+    skills: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Angular', 'Astro', 'Tailwind']
+  },
+  {
+    title: 'Datos',
+    subtitle: 'Modelado y persistencia',
+    skills: ['MySQL', 'PostgreSQL', 'Prisma ORM', 'JPA', 'SQL', 'phpMyAdmin']
+  },
+  {
+    title: 'Infraestructura',
+    subtitle: 'Entorno, despliegue y herramientas',
+    skills: ['Git', 'GitHub', 'Docker', 'Linux', 'XAMPP', 'FileZilla', 'Netlify']
+  }
+];
+---
+
+<section id="skills" class="section-padding">
+  <div class="container-page">
+    <div class="reveal">
+      <span class="section-kicker">Stack técnico</span>
+      <h2 class="section-title">Tecnologías separadas por lo que aportan al proyecto.</h2>
+      <p class="section-text">
+        No vendo que soy experto en todo. Enseño qué he tocado, dónde tengo más interés y qué tecnologías puedo seguir reforzando en un entorno profesional.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {groups.map((group, index) => (
+        <article class="glass shine-card reveal rounded-[2rem] p-6" style={`transition-delay: ${index * 90}ms`}>
+          <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-400/20 to-cyan-300/20 text-xl font-black text-cyan-100 shadow-cyanGlow">
+            {index + 1}
+          </div>
+          <h3 class="text-2xl font-black text-white">{group.title}</h3>
+          <p class="mt-2 text-sm text-slate-400">{group.subtitle}</p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            {group.skills.map((skill) => (
+              <span class="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-bold text-slate-200 transition hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

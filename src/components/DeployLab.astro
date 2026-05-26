@@ -1,0 +1,118 @@
+<section id="deploy-lab" class="section-padding">
+  <div class="container-page">
+    <div class="grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr]">
+      <div class="reveal">
+        <span class="section-kicker">Detalle interactivo</span>
+        <h2 class="section-title">Mini Deploy Lab: un jueguito para simular un despliegue.</h2>
+        <p class="section-text">
+          Pulsa los pasos en orden y verás cómo el proyecto pasa de código local a build y despliegue. Es un detalle simple, pero queda llamativo y conecta con mi interés por infraestructura y despliegue.
+        </p>
+      </div>
+
+      <div class="glass reveal relative overflow-hidden rounded-[2rem] p-5 shadow-glow">
+        <div class="pointer-events-none absolute left-0 top-0 h-20 w-full bg-gradient-to-b from-cyan-300/10 to-transparent animate-scan"></div>
+
+        <div class="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
+          <div class="flex items-center gap-2">
+            <span class="terminal-dot bg-red-400"></span>
+            <span class="terminal-dot bg-yellow-300"></span>
+            <span class="terminal-dot bg-emerald-400"></span>
+          </div>
+          <span class="font-mono text-xs text-slate-400">deploy-lab.exe</span>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-slate-950/70 p-5 font-mono text-sm">
+          <div id="deploy-log" class="min-h-40 space-y-2 text-slate-300">
+            <p><span class="text-cyan-300">marcos@portfolio</span>:<span class="text-violet-300">~</span>$ estado inicial: proyecto preparado</p>
+            <p class="text-slate-500">Pulsa los botones en orden para completar el despliegue.</p>
+          </div>
+
+          <div class="mt-5 h-3 overflow-hidden rounded-full bg-slate-800">
+            <div id="deploy-progress" class="h-full w-0 rounded-full bg-gradient-to-r from-violet-500 to-cyan-300 transition-all duration-500"></div>
+          </div>
+
+          <div class="mt-5 grid gap-3 sm:grid-cols-3">
+            <button data-step="0" class="deploy-btn rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 font-bold text-slate-200 transition hover:-translate-y-1 hover:border-violet-300/50 hover:bg-violet-300/10">1. Git push</button>
+            <button data-step="1" class="deploy-btn rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 font-bold text-slate-200 transition hover:-translate-y-1 hover:border-cyan-300/50 hover:bg-cyan-300/10">2. Build</button>
+            <button data-step="2" class="deploy-btn rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3 font-bold text-slate-200 transition hover:-translate-y-1 hover:border-emerald-300/50 hover:bg-emerald-300/10">3. Deploy</button>
+          </div>
+
+          <div id="deploy-result" class="mt-5 hidden rounded-2xl border border-emerald-300/20 bg-emerald-300/10 p-4 text-emerald-100">
+            Despliegue completado. Portfolio listo para enseñar a recruiters.
+          </div>
+        </div>
+
+        <div id="confetti-area" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const buttons = Array.from(document.querySelectorAll('.deploy-btn'));
+    const log = document.querySelector('#deploy-log');
+    const progress = document.querySelector('#deploy-progress');
+    const result = document.querySelector('#deploy-result');
+    const confettiArea = document.querySelector('#confetti-area');
+
+    let currentStep = 0;
+    const messages = [
+      '> git push origin main  correcto',
+      '> npm run build  dist generado sin errores',
+      '> deploy production  sitio publicado'
+    ];
+
+    function writeLine(text, success = false) {
+      if (!log) return;
+      const p = document.createElement('p');
+      p.textContent = text;
+      p.className = success ? 'text-emerald-300' : 'text-slate-300';
+      log.appendChild(p);
+    }
+
+    function celebrate() {
+      if (!confettiArea) return;
+      for (let i = 0; i < 26; i += 1) {
+        const piece = document.createElement('span');
+        piece.className = 'absolute h-2 w-2 rounded-sm bg-cyan-300 shadow-cyanGlow';
+        piece.style.left = `${Math.random() * 100}%`;
+        piece.style.top = '-10px';
+        piece.style.transform = `rotate(${Math.random() * 180}deg)`;
+        piece.style.transition = 'transform 1.2s ease, opacity 1.2s ease';
+        confettiArea.appendChild(piece);
+        requestAnimationFrame(() => {
+          piece.style.transform = `translateY(${180 + Math.random() * 260}px) translateX(${(Math.random() - 0.5) * 220}px) rotate(${Math.random() * 360}deg)`;
+          piece.style.opacity = '0';
+        });
+        setTimeout(() => piece.remove(), 1400);
+      }
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const step = Number(button.getAttribute('data-step'));
+        if (step !== currentStep) {
+          writeLine('> orden incorrecto: primero completa el paso anterior');
+          button.classList.add('animate-pulse');
+          setTimeout(() => button.classList.remove('animate-pulse'), 600);
+          return;
+        }
+
+        writeLine(messages[step], true);
+        button.setAttribute('disabled', 'true');
+        button.classList.add('border-emerald-300/50', 'bg-emerald-300/10', 'text-emerald-100');
+        currentStep += 1;
+
+        if (progress) {
+          progress.style.width = `${currentStep * 33.333}%`;
+        }
+
+        if (currentStep === 3) {
+          if (progress) progress.style.width = '100%';
+          if (result) result.classList.remove('hidden');
+          writeLine('> status: ONLINE', true);
+          celebrate();
+        }
+      });
+    });
+  </script>
+</section>

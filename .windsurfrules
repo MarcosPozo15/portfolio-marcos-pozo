@@ -1,0 +1,5 @@
+Proyecto Astro + TailwindCSS v3.
+No mezclar Tailwind v4 ni @tailwindcss/vite.
+Mantener las dependencias fijadas en package.json.
+Los estilos globales están en src/styles/global.css.
+Los componentes principales están en src/components.
